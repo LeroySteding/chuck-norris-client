@@ -1,24 +1,25 @@
 'use client';
 
 import { JokeCard } from '@/components/JokeCard';
+import { EmptyState } from '@/components/EmptyState';
 import { useFavorites } from '@/store/FavoritesProvider';
 
 export default function FavoritesPage() {
   const { favorites, remove, count, max } = useFavorites();
 
   return (
-    <main className="mx-auto max-w-3xl p-6">
-      <h1 className="text-2xl font-semibold">Favorieten</h1>
-      <p className="mt-1 text-sm opacity-80">
-        {count} / {max} opgeslagen
-      </p>
+    <main className="mx-auto max-w-3xl px-6 py-8">
+      <div className="mb-5">
+        <h1 className="text-[28px] font-bold text-content">Favorieten</h1>
+        <p className="mt-0.5 text-sm text-muted">
+          {count} / {max} opgeslagen
+        </p>
+      </div>
 
       {favorites.length === 0 ? (
-        <div className="mt-6 rounded-lg border p-4 text-sm opacity-80">
-          Nog geen favorieten.
-        </div>
+        <EmptyState />
       ) : (
-        <ul className="mt-6 space-y-3">
+        <ul className="space-y-3">
           {favorites.map((joke) => (
             <JokeCard
               key={joke.id}
@@ -28,7 +29,7 @@ export default function FavoritesPage() {
                 <button
                   type="button"
                   onClick={() => remove(joke.id)}
-                  className="shrink-0 rounded-md border px-3 py-2 text-sm hover:bg-black/5"
+                  className="shrink-0 rounded-lg border border-danger px-3 py-1.5 text-sm font-medium text-danger transition-colors hover:bg-danger-soft"
                 >
                   Remove
                 </button>

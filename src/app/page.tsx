@@ -4,93 +4,59 @@ import { useEffect, useRef, useState } from 'react';
 import { fetchRandomJoke } from '@/lib/chuckApi';
 import type { JokeItem } from '@/lib/types';
 import { JokeList } from '@/components/JokeList';
+import { SkeletonCard } from '@/components/SkeletonCard';
+import { StatusPill } from '@/components/StatusPill';
 import { addAndTrimByFetchedAt } from '@/lib/listRules';
 
 export default function HomePage() {
   const [items, setItems] = useState<JokeItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  /** Whether the 5s interval is active */
   const [isRunning, setIsRunning] = useState(false);
 
-  /**
-   * We keep a ref with the latest isRunning value.
-   * Why: async fetch can resolve after you clicked "Stop".
-   * The ref lets us ignore results if the user has stopped the timer.
-   */
   const isRunningRef = useRef(false);
   useEffect(() => {
     isRunningRef.current = isRunning;
   }, [isRunning]);
 
-  // 1) Initial load: fetch 10 jokes on mount
+  async function loadInitial(signal: AbortSignal) {
+    try {
+      setLoading(true);
+      setError(null);
+      const jokes = await Promise.all(Array.from({ length: 10 }, () => fetchRandomJoke(signal)));
+      const now = Date.now();
+      setItems(jokes.map((joke, i) => ({ joke, fetchedAt: now + i })));
+    } catch (err) {
+      if (err instanceof DOMException && err.name === 'AbortError') return;
+      setError(err instanceof Error ? err.message : 'Unknown error occurred');
+    } finally {
+      setLoading(false);
+    }
+  }
+
   useEffect(() => {
     const controller = new AbortController();
-
-    async function loadInitial() {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const jokes = await Promise.all(
-          Array.from({ length: 10 }, () => fetchRandomJoke(controller.signal)),
-        );
-
-        const now = Date.now();
-        const enriched: JokeItem[] = jokes.map((joke, index) => ({
-          joke,
-          fetchedAt: now + index,
-        }));
-
-        setItems(enriched);
-      } catch (err) {
-        if (err instanceof DOMException && err.name === 'AbortError') return;
-        setError(err instanceof Error ? err.message : 'Unknown error occurred');
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    void loadInitial();
-
+    void loadInitial(controller.signal);
     return () => controller.abort();
   }, []);
 
-  // 2) Timer effect: every 5s fetch 1 joke and update the rolling list (max 10)
   useEffect(() => {
     if (!isRunning) return;
-
     const controller = new AbortController();
 
-    /**
-     * We define the tick function once per effect run.
-     * On each tick:
-     * - fetch a random joke
-     * - add it to list
-     * - remove oldest if list exceeds 10
-     */
     async function tick() {
       try {
         const joke = await fetchRandomJoke(controller.signal);
-
-        // If user stopped in the meantime, ignore the result.
         if (!isRunningRef.current) return;
-
-        const nextItem: JokeItem = { joke, fetchedAt: Date.now() };
-
-        setItems((prev) => addAndTrimByFetchedAt(prev, nextItem, 10));
+        setItems((prev) => addAndTrimByFetchedAt(prev, { joke, fetchedAt: Date.now() }, 10));
       } catch (err) {
         if (err instanceof DOMException && err.name === 'AbortError') return;
-        // Optional: surface the error without breaking the app
         setError(err instanceof Error ? err.message : 'Failed to fetch new joke');
       }
     }
 
-    // Fire immediately (so user sees it working), then every 5 seconds
     void tick();
     const intervalId = window.setInterval(() => void tick(), 5000);
-
     return () => {
       window.clearInterval(intervalId);
       controller.abort();
@@ -98,36 +64,80 @@ export default function HomePage() {
   }, [isRunning]);
 
   return (
-    <main className="mx-auto max-w-3xl p-6">
-      <div className="flex items-end justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-semibold">Jokes</h1>
-          <p className="mt-1 text-sm opacity-80">
-            Timer voegt elke 5 seconden een random joke toe (max 10 zichtbaar).
-          </p>
-        </div>
-
-        <button
-          onClick={() => setIsRunning((v) => !v)}
-          className="rounded-md border px-3 py-2 text-sm hover:bg-black/5"
-        >
-          {isRunning ? 'Stop timer' : 'Start timer'}
-        </button>
+    <main className="mx-auto max-w-3xl px-6 py-8">
+      {/* Page header */}
+      <div className="mb-5">
+        <h1 className="text-[28px] font-bold text-content">Jokes</h1>
+        <p className="mt-1 text-sm text-muted">
+          10 random jokes on load — timer adds one every 5 seconds (max 10).
+        </p>
       </div>
 
+      {/* Controls */}
+      <div className="flex flex-wrap items-center gap-2">
+        <button
+          onClick={() => setIsRunning((v) => !v)}
+          className="flex items-center gap-1.5 rounded-lg bg-primary px-3.5 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-hover"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="h-4 w-4"
+          >
+            {isRunning ? (
+              <path d="M5.75 3a.75.75 0 00-.75.75v12.5c0 .414.336.75.75.75h1.5a.75.75 0 00.75-.75V3.75A.75.75 0 007.25 3h-1.5zm5 0a.75.75 0 00-.75.75v12.5c0 .414.336.75.75.75h1.5a.75.75 0 00.75-.75V3.75a.75.75 0 00-.75-.75h-1.5z" />
+            ) : (
+              <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+            )}
+          </svg>
+          {isRunning ? 'Stop Timer' : 'Start Timer'}
+        </button>
+
+        <button
+          onClick={() => {
+            const c = new AbortController();
+            void loadInitial(c.signal);
+          }}
+          disabled={loading}
+          className="flex items-center gap-1.5 rounded-lg border border-divider bg-surface px-3.5 py-2 text-sm font-medium text-content transition-colors hover:bg-surface-2 disabled:opacity-40"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="h-4 w-4 text-muted"
+          >
+            <path
+              fillRule="evenodd"
+              d="M15.312 11.424a5.5 5.5 0 01-9.201 2.466l-.312-.311h2.433a.75.75 0 000-1.5H3.989a.75.75 0 00-.75.75v4.242a.75.75 0 001.5 0v-2.43l.31.31a7 7 0 0011.712-3.138.75.75 0 00-1.449-.39zm1.23-3.723a.75.75 0 00.219-.53V2.929a.75.75 0 00-1.5 0V5.36l-.31-.31A7 7 0 003.239 8.188a.75.75 0 101.448.389A5.5 5.5 0 0113.89 6.11l.311.31h-2.432a.75.75 0 000 1.5h4.243a.75.75 0 00.53-.219z"
+              clipRule="evenodd"
+            />
+          </svg>
+          Refresh 10
+        </button>
+
+        <StatusPill status={isRunning ? 'running' : 'paused'} />
+      </div>
+
+      {/* Loading */}
       {loading && (
-        <div className="mt-6 rounded-lg border p-4 text-sm opacity-80">
-          Loading...
-        </div>
+        <ul className="mt-4 space-y-3">
+          {Array.from({ length: 5 }, (_, i) => (
+            <SkeletonCard key={i} />
+          ))}
+        </ul>
       )}
 
+      {/* Error */}
       {!loading && error && (
-        <div className="mt-6 rounded-lg border p-4 text-sm">
-          <div className="font-medium">Error</div>
-          <div className="mt-1 opacity-80">{error}</div>
+        <div className="mt-6 rounded-xl border border-danger-soft bg-danger-soft p-4 text-sm">
+          <p className="font-medium text-danger">Error</p>
+          <p className="mt-1 text-muted">{error}</p>
         </div>
       )}
 
+      {/* List */}
       {!loading && !error && <JokeList items={items} />}
     </main>
   );
