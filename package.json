@@ -54,6 +54,11 @@
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.0.18"
   },
+  "overrides": {
+    "fdir": {
+      "picomatch": "^4.0.3"
+    }
+  },
   "engines": {
     "node": ">=22 <23"
   }
