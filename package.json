@@ -15,7 +15,17 @@
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "doctor": "npx -y react-doctor@latest .",
-    "doctor:diff": "npx -y react-doctor@latest . --diff main --verbose"
+    "doctor:diff": "npx -y react-doctor@latest . --diff main --verbose",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml,css}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "next": "16.1.6",
@@ -34,7 +44,9 @@
     "eslint-config-next": "16.1.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
+    "husky": "^9.1.7",
     "jsdom": "^28.1.0",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.8.1",
     "tailwindcss": "^4",
     "typescript": "^5",
