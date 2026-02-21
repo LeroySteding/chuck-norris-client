@@ -1,26 +1,36 @@
 @import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* ── Design tokens from Pencil ─────────────────────────────── */
+  --color-page: #f7f8fb; /* page / body background    */
+  --color-surface: #ffffff; /* cards, header             */
+  --color-surface-2: #f2f4f8; /* skeleton, paused pill bg  */
+  --color-divider: #e6e8ef; /* borders                   */
+
+  --color-content: #101828; /* primary text              */
+  --color-muted: #475467; /* secondary / subtitle text */
+  --color-faint: #98a2b3; /* timestamps, IDs, inactive */
+
+  --color-primary: #f59e0b; /* amber — buttons, active nav, badges */
+  --color-primary-hover: #d97706; /* amber darker — hover      */
+  --color-primary-soft: #fffbeb; /* amber tint — soft bg      */
+
+  --color-danger: #dc2626; /* red — remove, error       */
+  --color-danger-soft: #fef2f2; /* red tint — hover bg       */
+
+  --color-success: #16a34a; /* green — running           */
+  --color-success-soft: #ecfdf3; /* green tint                */
+
+  --color-info: #2563eb; /* blue — dev badge          */
+  --color-info-soft: #eff6ff; /* blue tint                 */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: #f7f8fb;
+  color: #101828;
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
