@@ -1,30 +1,30 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { fetchRandomJoke } from '@/lib/chuckApi';
 import type { JokeItem } from '@/lib/types';
 import { JokeList } from '@/components/JokeList';
+import { addAndTrimByFetchedAt } from '@/lib/listRules';
 
 export default function HomePage() {
-  /**
-   * Holds the 10 jokes currently visible in the UI.
-   * We wrap the API joke inside a JokeItem to add our own metadata:
-   * - fetchedAt: used to determine "oldest" later (NOT created_at from API)
-   */
   const [items, setItems] = useState<JokeItem[]>([]);
-
-  /** Loading state for initial fetch */
   const [loading, setLoading] = useState(true);
-
-  /** Error state for API failures */
   const [error, setError] = useState<string | null>(null);
 
+  /** Whether the 5s interval is active */
+  const [isRunning, setIsRunning] = useState(false);
+
   /**
-   * Load 10 random jokes when the page mounts.
-   *
-   * We define the async function INSIDE useEffect.
-   * This avoids dependency issues and removes the need to disable ESLint rules.
+   * We keep a ref with the latest isRunning value.
+   * Why: async fetch can resolve after you clicked "Stop".
+   * The ref lets us ignore results if the user has stopped the timer.
    */
+  const isRunningRef = useRef(false);
+  useEffect(() => {
+    isRunningRef.current = isRunning;
+  }, [isRunning]);
+
+  // 1) Initial load: fetch 10 jokes on mount
   useEffect(() => {
     const controller = new AbortController();
 
@@ -33,41 +33,20 @@ export default function HomePage() {
         setLoading(true);
         setError(null);
 
-        /**
-         * Fetch 10 jokes in parallel.
-         * Promise.all ensures we wait for all of them.
-         */
         const jokes = await Promise.all(
-          Array.from({ length: 10 }, () =>
-            fetchRandomJoke(controller.signal),
-          ),
+          Array.from({ length: 10 }, () => fetchRandomJoke(controller.signal)),
         );
 
-        /**
-         * Add fetchedAt timestamp.
-         * We do NOT rely on joke.created_at because
-         * the assignment says "oldest !== joke.created_at".
-         */
         const now = Date.now();
-
         const enriched: JokeItem[] = jokes.map((joke, index) => ({
           joke,
-          fetchedAt: now + index, // ensures stable ordering
+          fetchedAt: now + index,
         }));
 
         setItems(enriched);
       } catch (err) {
-        /**
-         * If the component unmounts, AbortController triggers.
-         * We ignore AbortError as it's expected behaviour.
-         */
-        if (err instanceof DOMException && err.name === 'AbortError') {
-          return;
-        }
-
-        setError(
-          err instanceof Error ? err.message : 'Unknown error occurred',
-        );
+        if (err instanceof DOMException && err.name === 'AbortError') return;
+        setError(err instanceof Error ? err.message : 'Unknown error occurred');
       } finally {
         setLoading(false);
       }
@@ -75,29 +54,77 @@ export default function HomePage() {
 
     void loadInitial();
 
+    return () => controller.abort();
+  }, []);
+
+  // 2) Timer effect: every 5s fetch 1 joke and update the rolling list (max 10)
+  useEffect(() => {
+    if (!isRunning) return;
+
+    const controller = new AbortController();
+
     /**
-     * Cleanup:
-     * If component unmounts while request is in flight,
-     * abort it to prevent state update on unmounted component.
+     * We define the tick function once per effect run.
+     * On each tick:
+     * - fetch a random joke
+     * - add it to list
+     * - remove oldest if list exceeds 10
      */
+    async function tick() {
+      try {
+        const joke = await fetchRandomJoke(controller.signal);
+
+        // If user stopped in the meantime, ignore the result.
+        if (!isRunningRef.current) return;
+
+        const nextItem: JokeItem = { joke, fetchedAt: Date.now() };
+
+        setItems((prev) => addAndTrimByFetchedAt(prev, nextItem, 10));
+      } catch (err) {
+        if (err instanceof DOMException && err.name === 'AbortError') return;
+        // Optional: surface the error without breaking the app
+        setError(err instanceof Error ? err.message : 'Failed to fetch new joke');
+      }
+    }
+
+    // Fire immediately (so user sees it working), then every 5 seconds
+    void tick();
+    const intervalId = window.setInterval(() => void tick(), 5000);
+
     return () => {
+      window.clearInterval(intervalId);
       controller.abort();
     };
-  }, []); // empty dependency array = run once on mount
+  }, [isRunning]);
 
   return (
     <main className="mx-auto max-w-3xl p-6">
-      <h1 className="text-2xl font-semibold">Jokes</h1>
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-semibold">Jokes</h1>
+          <p className="mt-1 text-sm opacity-80">
+            Timer voegt elke 5 seconden een random joke toe (max 10 zichtbaar).
+          </p>
+        </div>
+
+        <button
+          onClick={() => setIsRunning((v) => !v)}
+          className="rounded-md border px-3 py-2 text-sm hover:bg-black/5"
+        >
+          {isRunning ? 'Stop timer' : 'Start timer'}
+        </button>
+      </div>
 
       {loading && (
-        <div className="mt-4 rounded border p-4 text-sm opacity-70">
+        <div className="mt-6 rounded-lg border p-4 text-sm opacity-80">
           Loading...
         </div>
       )}
 
-      {error && (
-        <div className="mt-4 rounded border p-4 text-sm">
-          Error: {error}
+      {!loading && error && (
+        <div className="mt-6 rounded-lg border p-4 text-sm">
+          <div className="font-medium">Error</div>
+          <div className="mt-1 opacity-80">{error}</div>
         </div>
       )}
 
