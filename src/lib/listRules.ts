@@ -2,8 +2,8 @@ import type { JokeItem } from '@/lib/types';
 
 /**
  * Adds a new item and ensures the list never exceeds maxItems.
- * The "oldest" item is determined by our own `fetchedAt` timestamp,
- * not by API fields like created_at/updated_at.
+ * For the rolling list we assume fetchedAt is always set.
+ * If it isn't, we treat it as "newest" by using Number.MAX_SAFE_INTEGER.
  */
 export function addAndTrimByFetchedAt(
   prev: JokeItem[],
@@ -12,13 +12,14 @@ export function addAndTrimByFetchedAt(
 ): JokeItem[] {
   const combined = [...prev, nextItem];
 
-  // If we didn't exceed the max, we're done.
   if (combined.length <= maxItems) return combined;
 
-  // Find the oldest item by lowest fetchedAt and remove it.
+  // Helper: convert optional fetchedAt to a comparable number
+  const ts = (item: JokeItem) => item.fetchedAt ?? Number.MAX_SAFE_INTEGER;
+
   let oldestIndex = 0;
   for (let i = 1; i < combined.length; i++) {
-    if (combined[i].fetchedAt < combined[oldestIndex].fetchedAt) {
+    if (ts(combined[i]) < ts(combined[oldestIndex])) {
       oldestIndex = i;
     }
   }
