@@ -13,7 +13,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:run": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "doctor": "npx -y react-doctor@latest .",
+    "doctor:diff": "npx -y react-doctor@latest . --diff main --verbose"
   },
   "dependencies": {
     "next": "16.1.6",
