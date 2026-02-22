@@ -29,6 +29,6 @@ describe('addAndTrimByFetchedAt', () => {
 
     // oldest fetchedAt=0 should be removed; remaining should include 1..10
     const ids = items.map((x) => x.joke.id).sort();
-    expect(ids).toEqual(['1','10','2','3','4','5','6','7','8','9']);
+    expect(ids).toEqual(['1', '10', '2', '3', '4', '5', '6', '7', '8', '9']);
   });
 });
