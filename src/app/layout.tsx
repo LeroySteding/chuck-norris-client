@@ -4,7 +4,10 @@ import { Providers } from '@/app/providers';
 import { Header } from '@/components/Header';
 
 export const metadata: Metadata = {
-  title: 'Chuck Norris Client',
+  title: {
+    template: '%s | Chuck Norris',
+    default: 'Chuck Norris Client',
+  },
   description: 'Random Chuck Norris jokes + favorites',
 };
 
