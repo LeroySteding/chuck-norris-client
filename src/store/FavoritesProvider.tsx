@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { ChuckJoke } from '@/lib/chuckApi';
 import {
   favoritesRules,
@@ -36,11 +30,7 @@ type FavoritesContextValue = {
 
 const FavoritesContext = createContext<FavoritesContextValue | null>(null);
 
-export function FavoritesProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   /**
    * State container for favorites.
    *
@@ -57,6 +47,7 @@ export function FavoritesProvider({
    * - avoids SSR issues
    */
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFavorites(loadFavorites());
   }, []);
 
@@ -94,16 +85,11 @@ export function FavoritesProvider({
         return { blockedByLimit: result.blockedByLimit };
       },
 
-      remove: (id) =>
-        setFavorites((prev) => removeFavorite(prev, id)),
+      remove: (id) => setFavorites((prev) => removeFavorite(prev, id)),
     };
   }, [favorites]);
 
-  return (
-    <FavoritesContext.Provider value={value}>
-      {children}
-    </FavoritesContext.Provider>
-  );
+  return <FavoritesContext.Provider value={value}>{children}</FavoritesContext.Provider>;
 }
 
 /**
@@ -116,9 +102,7 @@ export function useFavorites() {
   const ctx = useContext(FavoritesContext);
 
   if (!ctx) {
-    throw new Error(
-      'useFavorites must be used within FavoritesProvider',
-    );
+    throw new Error('useFavorites must be used within FavoritesProvider');
   }
 
   return ctx;
