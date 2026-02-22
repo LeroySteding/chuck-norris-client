@@ -1,0 +1,2038 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "Hyqpi",
+      "x": 0,
+      "y": 0,
+      "name": "Page / Jokes",
+      "clip": true,
+      "width": 920,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "FJyiA",
+          "name": "Header",
+          "width": "fill_container",
+          "fill": "$surface",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border"
+          },
+          "padding": [
+            16,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "mvjeZ",
+              "name": "brandWrap",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "ZRJz1",
+                  "name": "brandIcon",
+                  "width": 22,
+                  "height": 22,
+                  "iconFontName": "zap",
+                  "iconFontFamily": "lucide",
+                  "fill": "$primary"
+                },
+                {
+                  "type": "text",
+                  "id": "j0kTC",
+                  "name": "brandText",
+                  "fill": "$text",
+                  "content": "Chuck Norris Client",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "0eZuz",
+              "name": "navWrap",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "59rkN",
+                  "type": "ref",
+                  "ref": "5Sxh4",
+                  "name": "navJokes",
+                  "descendants": {
+                    "VjiWt": {
+                      "content": "Jokes"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "b6vmN",
+                  "name": "navFavWrap",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "gsZbL",
+                      "type": "ref",
+                      "ref": "3mTbQ",
+                      "name": "navFav",
+                      "descendants": {
+                        "HqeP0": {
+                          "content": "Favorieten"
+                        }
+                      }
+                    },
+                    {
+                      "id": "rRGOC",
+                      "type": "ref",
+                      "ref": "341lW",
+                      "name": "navBadge"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "9M37t",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "ESoxS",
+              "name": "Title Row",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "czuLA",
+                  "name": "titleCol",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "U4Yst",
+                      "name": "titleText",
+                      "fill": "$text",
+                      "content": "Jokes",
+                      "fontFamily": "Inter",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "RlNnP",
+                      "name": "subtitleText",
+                      "fill": "$text-muted",
+                      "content": "10 random jokes on load — timer adds one every 5 seconds (max 10).",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "1iDja",
+              "name": "Controls Row",
+              "width": "fill_container",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "Ig2PT",
+                  "type": "ref",
+                  "ref": "DTJvN",
+                  "name": "timerBtn",
+                  "descendants": {
+                    "RunJb": {
+                      "content": "▶  Start Timer"
+                    }
+                  }
+                },
+                {
+                  "id": "Vih32",
+                  "type": "ref",
+                  "ref": "Xhu3V",
+                  "name": "refreshBtn",
+                  "descendants": {
+                    "ARbv9": {
+                      "content": "↻  Refresh 10"
+                    }
+                  }
+                },
+                {
+                  "id": "sl1d3",
+                  "type": "ref",
+                  "ref": "AKI4M",
+                  "name": "statusPill"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fz6cG",
+              "name": "Joke List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "id": "JvZMg",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "card1",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "Chuck Norris can divide by zero. He just stares at the equation until it gives up."
+                    },
+                    "PTBF6": {
+                      "content": "dev"
+                    },
+                    "KKGcK": {
+                      "content": "GSJpMvH…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:01"
+                    }
+                  }
+                },
+                {
+                  "id": "tM6En",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "card2",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "When Chuck Norris does a pushup, he isn't lifting himself up — he's pushing the Earth down."
+                    },
+                    "w0P2P": {
+                      "children": [
+                        {
+                          "id": "Jscif",
+                          "type": "ref",
+                          "ref": "25YTe"
+                        }
+                      ]
+                    },
+                    "hRfQc": {
+                      "fill": "$success-soft"
+                    },
+                    "PTBF6": {
+                      "content": "sports",
+                      "fill": "$success"
+                    },
+                    "KKGcK": {
+                      "content": "KqRxTnD…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:03"
+                    }
+                  }
+                },
+                {
+                  "id": "3XCaX",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "card3",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "Chuck Norris counted to infinity. Twice."
+                    },
+                    "hRfQc": {
+                      "fill": "$primary-soft"
+                    },
+                    "PTBF6": {
+                      "content": "nerdy",
+                      "fill": "$primary-strong"
+                    },
+                    "KKGcK": {
+                      "content": "mWbPcXz…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:05"
+                    }
+                  }
+                },
+                {
+                  "id": "wwRdM",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "card4",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "Chuck Norris can hear sign language."
+                    },
+                    "hRfQc": {
+                      "fill": "$surface-2"
+                    },
+                    "PTBF6": {
+                      "content": "celebrity",
+                      "fill": "$text-muted"
+                    },
+                    "KKGcK": {
+                      "content": "yNkFvQm…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:07"
+                    }
+                  }
+                },
+                {
+                  "id": "86t4u",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "card5",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "There is no Ctrl key on Chuck Norris's keyboard. Chuck Norris is always in control."
+                    },
+                    "w0P2P": {
+                      "children": [
+                        {
+                          "id": "zHOYS",
+                          "type": "ref",
+                          "ref": "25YTe"
+                        }
+                      ]
+                    },
+                    "PTBF6": {
+                      "content": "dev"
+                    },
+                    "KKGcK": {
+                      "content": "hTsLjRp…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:09"
+                    }
+                  }
+                },
+                {
+                  "id": "BRIKy",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "card6",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "Chuck Norris doesn't read books. He stares them down until he gets the information he wants."
+                    },
+                    "hRfQc": {
+                      "fill": "$danger-soft"
+                    },
+                    "PTBF6": {
+                      "content": "animal",
+                      "fill": "$danger",
+                      "x": 8,
+                      "y": 2
+                    },
+                    "KKGcK": {
+                      "content": "pEiDuNc…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:11"
+                    }
+                  }
+                },
+                {
+                  "id": "eWYbw",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "card7",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "Chuck Norris has a grizzly bear carpet in his room. The bear isn't dead, it's just too afraid to move."
+                    },
+                    "hRfQc": {
+                      "fill": "$danger-soft"
+                    },
+                    "PTBF6": {
+                      "content": "animal",
+                      "fill": "$danger",
+                      "x": 8,
+                      "y": 2
+                    },
+                    "KKGcK": {
+                      "content": "oZwBkAf…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:13"
+                    }
+                  }
+                },
+                {
+                  "id": "KmTmG",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "card8",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "When Chuck Norris enters a room, he doesn't turn the lights on. He turns the dark off."
+                    },
+                    "w0P2P": {
+                      "children": [
+                        {
+                          "id": "OpeEc",
+                          "type": "ref",
+                          "ref": "25YTe"
+                        }
+                      ]
+                    },
+                    "hRfQc": {
+                      "enabled": false,
+                      "fill": "$primary-soft"
+                    },
+                    "PTBF6": {
+                      "content": "nerdy",
+                      "fill": "$primary-strong",
+                      "x": 8,
+                      "y": 2
+                    },
+                    "KKGcK": {
+                      "content": "rCvGxHt…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:15"
+                    }
+                  }
+                },
+                {
+                  "id": "6Uu7R",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "card9",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "Chuck Norris once kicked a horse in the chin. Its descendants are known today as Giraffes."
+                    },
+                    "hRfQc": {
+                      "fill": "$danger-soft"
+                    },
+                    "PTBF6": {
+                      "content": "animal",
+                      "fill": "$danger",
+                      "x": 8,
+                      "y": 2
+                    },
+                    "KKGcK": {
+                      "content": "sMqJyUe…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:17"
+                    }
+                  }
+                },
+                {
+                  "id": "iFx9T",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "card10",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "Chuck Norris doesn't wear a watch. He decides what time it is."
+                    },
+                    "hRfQc": {
+                      "fill": "$surface-2"
+                    },
+                    "PTBF6": {
+                      "content": "celebrity",
+                      "fill": "$text-muted",
+                      "x": 8,
+                      "y": 2
+                    },
+                    "KKGcK": {
+                      "content": "wLnOaBi…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:19"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "KXfHh",
+      "x": 1980,
+      "y": 0,
+      "name": "Page / Favorites",
+      "clip": true,
+      "width": 920,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Y6hZ0",
+          "name": "Header",
+          "width": "fill_container",
+          "fill": "$surface",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border"
+          },
+          "padding": [
+            16,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Br64A",
+              "name": "favBrandWrap",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "kjRxh",
+                  "name": "favBrandIcon",
+                  "width": 22,
+                  "height": 22,
+                  "iconFontName": "zap",
+                  "iconFontFamily": "lucide",
+                  "fill": "$primary"
+                },
+                {
+                  "type": "text",
+                  "id": "kBjyJ",
+                  "name": "favBrandText",
+                  "fill": "$text",
+                  "content": "Chuck Norris Client",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "dhQ2p",
+              "name": "favNavWrap",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "ieDPj",
+                  "type": "ref",
+                  "ref": "3mTbQ",
+                  "name": "favNavJokes",
+                  "descendants": {
+                    "HqeP0": {
+                      "content": "Jokes"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "o1StC",
+                  "name": "favNavFavWrap",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "whylf",
+                      "type": "ref",
+                      "ref": "5Sxh4",
+                      "name": "favNavFav",
+                      "descendants": {
+                        "VjiWt": {
+                          "content": "Favorieten"
+                        }
+                      }
+                    },
+                    {
+                      "id": "Wr1LX",
+                      "type": "ref",
+                      "ref": "341lW",
+                      "name": "favNavBadge"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ogYXH",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "NTGdc",
+              "name": "Title Row",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "60jsR",
+                  "name": "favTitleCol",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "UtgNk",
+                      "name": "favTitle",
+                      "fill": "$text",
+                      "content": "Favorieten",
+                      "fontFamily": "Inter",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "eIZtO",
+                      "name": "favSubtitle",
+                      "fill": "$text-muted",
+                      "content": "3 / 10 opgeslagen",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "nM9xJ",
+              "name": "Favorites List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "id": "jnnSV",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "fav1",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "When Chuck Norris does a pushup, he isn't lifting himself up — he's pushing the Earth down."
+                    },
+                    "w0P2P": {
+                      "id": "UOgq8",
+                      "type": "ref",
+                      "ref": "IaZ9a",
+                      "name": "rm1"
+                    },
+                    "hRfQc": {
+                      "fill": "$success-soft"
+                    },
+                    "PTBF6": {
+                      "content": "sports",
+                      "fill": "$success",
+                      "x": 8,
+                      "y": 2
+                    },
+                    "KKGcK": {
+                      "content": "KqRxTnD…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:03"
+                    }
+                  }
+                },
+                {
+                  "id": "JfuD1",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "fav2",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "There is no Ctrl key on Chuck Norris's keyboard. Chuck Norris is always in control."
+                    },
+                    "w0P2P": {
+                      "id": "xsBDN",
+                      "type": "ref",
+                      "ref": "IaZ9a",
+                      "name": "rm2"
+                    },
+                    "PTBF6": {
+                      "content": "dev"
+                    },
+                    "KKGcK": {
+                      "content": "hTsLjRp…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:09"
+                    }
+                  }
+                },
+                {
+                  "id": "n6HUt",
+                  "type": "ref",
+                  "ref": "Jizm0",
+                  "width": "fill_container",
+                  "name": "fav3",
+                  "descendants": {
+                    "GzNA3": {
+                      "content": "When Chuck Norris enters a room, he doesn't turn the lights on. He turns the dark off."
+                    },
+                    "w0P2P": {
+                      "id": "IuHne",
+                      "type": "ref",
+                      "ref": "IaZ9a",
+                      "name": "rm3"
+                    },
+                    "hRfQc": {
+                      "fill": "$primary-soft"
+                    },
+                    "PTBF6": {
+                      "content": "nerdy",
+                      "fill": "$primary-strong"
+                    },
+                    "KKGcK": {
+                      "content": "rCvGxHt…"
+                    },
+                    "2JtNA": {
+                      "content": "09:12:15"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "oNyqD",
+      "x": 3000,
+      "y": 0,
+      "name": "Page / Favorites (Empty State)",
+      "clip": true,
+      "width": 920,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "rTgQb",
+          "name": "Header",
+          "width": "fill_container",
+          "fill": "$surface",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border"
+          },
+          "padding": [
+            16,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "WHRxY",
+              "name": "emptyBrandWrap",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "EjRFf",
+                  "name": "emptyBrandIcon",
+                  "width": 22,
+                  "height": 22,
+                  "iconFontName": "zap",
+                  "iconFontFamily": "lucide",
+                  "fill": "$primary"
+                },
+                {
+                  "type": "text",
+                  "id": "zSvPA",
+                  "name": "emptyBrandText",
+                  "fill": "$text",
+                  "content": "Chuck Norris Client",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "MY4dI",
+              "name": "emptyNavWrap",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "eGvwR",
+                  "type": "ref",
+                  "ref": "3mTbQ",
+                  "name": "emptyNavJokes",
+                  "descendants": {
+                    "HqeP0": {
+                      "content": "Jokes"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "naKim",
+                  "name": "emptyNavFavWrap",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "jtb68",
+                      "type": "ref",
+                      "ref": "5Sxh4",
+                      "name": "emptyNavFav",
+                      "descendants": {
+                        "VjiWt": {
+                          "content": "Favorieten"
+                        }
+                      }
+                    },
+                    {
+                      "id": "P8euR",
+                      "type": "ref",
+                      "ref": "341lW",
+                      "name": "emptyNavBadge",
+                      "descendants": {
+                        "fS14Y": {
+                          "content": "0/10"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "6BN7z",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "YH3Vd",
+              "name": "Title Row",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "yU3QL",
+                  "name": "emptyTitleCol",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "UZWgD",
+                      "name": "emptyTitleText",
+                      "fill": "$text",
+                      "content": "Favorieten",
+                      "fontFamily": "Inter",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "SFerT",
+                      "name": "emptySubtitle",
+                      "fill": "$text-muted",
+                      "content": "0 / 10 opgeslagen",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zSri4",
+              "type": "ref",
+              "ref": "k4x0W",
+              "width": "fill_container",
+              "name": "emptyStateRef"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "2g30U",
+      "x": 4060,
+      "y": 0,
+      "name": "Page / Loading State",
+      "clip": true,
+      "width": 920,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "2Ggp4",
+          "name": "Header",
+          "width": "fill_container",
+          "fill": "$surface",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border"
+          },
+          "padding": [
+            16,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "3b60C",
+              "name": "brandWrap",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "MeT5g",
+                  "name": "brandIcon",
+                  "width": 22,
+                  "height": 22,
+                  "iconFontName": "zap",
+                  "iconFontFamily": "lucide",
+                  "fill": "$primary"
+                },
+                {
+                  "type": "text",
+                  "id": "aBjhW",
+                  "name": "brandText",
+                  "fill": "$text",
+                  "content": "Chuck Norris Client",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sSTaf",
+              "name": "navWrap",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "lNwQs",
+                  "type": "ref",
+                  "ref": "5Sxh4",
+                  "descendants": {
+                    "VjiWt": {
+                      "content": "Jokes"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "K0XzW",
+                  "name": "navFavWrap",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "c7gGg",
+                      "type": "ref",
+                      "ref": "3mTbQ",
+                      "descendants": {
+                        "HqeP0": {
+                          "content": "Favorieten"
+                        }
+                      }
+                    },
+                    {
+                      "id": "vTgTq",
+                      "type": "ref",
+                      "ref": "341lW",
+                      "descendants": {
+                        "fS14Y": {
+                          "content": "0/10"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "5sSS2",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "BEnEY",
+              "name": "Title Row",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Om6VS",
+                  "name": "titleCol",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "KlhlT",
+                      "name": "titleText",
+                      "fill": "$text",
+                      "content": "Jokes",
+                      "fontFamily": "Inter",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fI1H0",
+                      "name": "subtitleText",
+                      "fill": "$text-muted",
+                      "content": "10 random jokes on load — timer adds one every 5 seconds (max 10).",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "PqzUL",
+              "name": "Controls Row",
+              "width": "fill_container",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "BJ1TK",
+                  "type": "ref",
+                  "ref": "DTJvN",
+                  "descendants": {
+                    "RunJb": {
+                      "content": "▶  Start Timer"
+                    }
+                  }
+                },
+                {
+                  "id": "grrwQ",
+                  "type": "ref",
+                  "ref": "Xhu3V",
+                  "descendants": {
+                    "ARbv9": {
+                      "content": "↻  Refresh 10"
+                    }
+                  }
+                },
+                {
+                  "id": "fDf20",
+                  "type": "ref",
+                  "ref": "65ju8"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jjGo0",
+              "name": "Skeleton List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "id": "gYKZh",
+                  "type": "ref",
+                  "ref": "kATID",
+                  "width": "fill_container"
+                },
+                {
+                  "id": "R2dAx",
+                  "type": "ref",
+                  "ref": "kATID",
+                  "width": "fill_container"
+                },
+                {
+                  "id": "uD2r3",
+                  "type": "ref",
+                  "ref": "kATID",
+                  "width": "fill_container"
+                },
+                {
+                  "id": "ieiZn",
+                  "type": "ref",
+                  "ref": "kATID",
+                  "width": "fill_container"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Tx60u",
+      "x": 5300,
+      "y": 0,
+      "name": "Design System",
+      "fill": "$surface",
+      "cornerRadius": 16,
+      "stroke": {
+        "thickness": 1,
+        "fill": "$border"
+      },
+      "layout": "vertical",
+      "gap": 40,
+      "padding": 40,
+      "children": [
+        {
+          "type": "frame",
+          "id": "se01X",
+          "name": "Buttons",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "HPBUv",
+              "fill": "$text-muted",
+              "content": "BUTTONS",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "GoKOx",
+              "name": "btnRow",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "DTJvN",
+                  "name": "Component/Button/Primary",
+                  "reusable": true,
+                  "fill": "$primary",
+                  "cornerRadius": 10,
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "RunJb",
+                      "name": "btnLabel",
+                      "fill": "#FFFFFF",
+                      "content": "Button",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Xhu3V",
+                  "name": "Component/Button/Secondary",
+                  "reusable": true,
+                  "fill": "$surface",
+                  "cornerRadius": 10,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ARbv9",
+                      "name": "btnSecLabel",
+                      "fill": "$text",
+                      "content": "Button",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WnoFw",
+                  "name": "Component/Button/Ghost",
+                  "reusable": true,
+                  "cornerRadius": 10,
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ybAkM",
+                      "name": "btnGhostLabel",
+                      "fill": "$text-muted",
+                      "content": "Button",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IaZ9a",
+                  "name": "Component/Button/Danger",
+                  "reusable": true,
+                  "fill": "$danger-soft",
+                  "cornerRadius": 10,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$danger"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "2TCQ7",
+                      "name": "btnDangerLabel",
+                      "fill": "$danger",
+                      "content": "Remove",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "bLnJT",
+          "name": "Status & Actions",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "3GWUT",
+              "fill": "$text-muted",
+              "content": "STATUS & ACTIONS",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "nmm1Z",
+              "name": "statusRow",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "AKI4M",
+                  "name": "Component/StatusPill/Running",
+                  "reusable": true,
+                  "fill": "$success-soft",
+                  "cornerRadius": 20,
+                  "gap": 6,
+                  "padding": [
+                    4,
+                    12
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "fH37d",
+                      "name": "pillDot",
+                      "fill": "$success",
+                      "width": 6,
+                      "height": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "RvyQU",
+                      "name": "pillText",
+                      "fill": "$success",
+                      "content": "Running",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "65ju8",
+                  "name": "Component/StatusPill/Paused",
+                  "reusable": true,
+                  "fill": "$surface-2",
+                  "cornerRadius": 20,
+                  "gap": 6,
+                  "padding": [
+                    4,
+                    12
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "5XIVU",
+                      "name": "pillDotP",
+                      "fill": "$text-muted",
+                      "width": 6,
+                      "height": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "FgmqL",
+                      "name": "pillTextP",
+                      "fill": "$text-muted",
+                      "content": "Paused",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Wk63a",
+                  "name": "Component/StarButton/Inactive",
+                  "reusable": true,
+                  "width": 40,
+                  "height": 40,
+                  "cornerRadius": 10,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "KRaHZ",
+                      "name": "starIcon",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "star",
+                      "iconFontFamily": "lucide",
+                      "fill": "$favorite-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "25YTe",
+                  "name": "Component/StarButton/Active",
+                  "reusable": true,
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$primary-soft",
+                  "cornerRadius": 10,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "9tiGt",
+                      "name": "starIconA",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "star",
+                      "iconFontFamily": "lucide",
+                      "fill": "$favorite"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Msw5I",
+          "name": "Navigation",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "ZXhyt",
+              "fill": "$text-muted",
+              "content": "NAVIGATION",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "1hQ4h",
+              "name": "navRow",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "3mTbQ",
+                  "name": "Component/NavLink/Default",
+                  "reusable": true,
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HqeP0",
+                      "name": "navLinkText",
+                      "fill": "$text-muted",
+                      "content": "Jokes",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "5Sxh4",
+                  "name": "Component/NavLink/Active",
+                  "reusable": true,
+                  "fill": "$primary-soft",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VjiWt",
+                      "name": "navLinkActiveText",
+                      "fill": "$primary-strong",
+                      "content": "Jokes",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "341lW",
+                  "name": "Component/NavBadge",
+                  "reusable": true,
+                  "fill": "$primary",
+                  "cornerRadius": 10,
+                  "padding": [
+                    2,
+                    8
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fS14Y",
+                      "name": "navBadgeText",
+                      "fill": "#FFFFFF",
+                      "content": "3/10",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "1Y2Cq",
+          "name": "Cards & Feedback",
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "1Y0ej",
+              "fill": "$text-muted",
+              "content": "CARDS & FEEDBACK",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "C9dCD",
+              "name": "Component/Toast",
+              "reusable": true,
+              "width": 680,
+              "fill": "$primary-soft",
+              "cornerRadius": 10,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$primary"
+              },
+              "gap": 12,
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "2jTPQ",
+                  "name": "toastIcon",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "triangle-alert",
+                  "iconFontFamily": "lucide",
+                  "fill": "$primary-strong"
+                },
+                {
+                  "type": "text",
+                  "id": "l8qZR",
+                  "name": "toastText",
+                  "fill": "$primary-strong",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Maximaal 10 favorieten toegestaan.",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "OxiDp",
+                  "name": "toastClose",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "x",
+                  "iconFontFamily": "lucide",
+                  "fill": "$primary-strong"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "k4x0W",
+              "name": "Component/EmptyState",
+              "reusable": true,
+              "width": 680,
+              "fill": "$surface",
+              "cornerRadius": 14,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border"
+              },
+              "layout": "vertical",
+              "gap": 16,
+              "padding": [
+                48,
+                32
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "NF5zJ",
+                  "name": "emptyIcon",
+                  "width": 56,
+                  "height": 56,
+                  "fill": "$surface-2",
+                  "cornerRadius": 14,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "ztWww",
+                      "name": "emptyIconInner",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "heart",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "NBVqX",
+                  "name": "emptyTitle",
+                  "fill": "$text",
+                  "content": "Nog geen favorieten",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "zSKcL",
+                  "name": "emptyDesc",
+                  "fill": "$text-muted",
+                  "textGrowth": "fixed-width",
+                  "width": 400,
+                  "content": "Ga naar Jokes en klik ☆ om je favoriete grappen op te slaan.",
+                  "lineHeight": 1.5,
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 14
+                },
+                {
+                  "id": "J2sDj",
+                  "type": "ref",
+                  "ref": "DTJvN",
+                  "name": "emptyCta",
+                  "descendants": {
+                    "RunJb": {
+                      "content": "Naar Jokes"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Jizm0",
+              "name": "Component/JokeCard",
+              "reusable": true,
+              "width": 680,
+              "fill": "$surface",
+              "cornerRadius": 14,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border"
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "abpKB",
+                  "name": "topRow",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "eO3Tj",
+                      "name": "avatar",
+                      "width": 40,
+                      "height": 40,
+                      "fill": "$primary-soft",
+                      "cornerRadius": 20,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "QFc4n",
+                          "name": "avatarInner",
+                          "fill": "$primary-strong",
+                          "content": "CN",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "M9uyG",
+                      "name": "contentCol",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "GzNA3",
+                          "name": "jokeText",
+                          "fill": "$text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Chuck Norris can divide by zero. He just stares at the equation until it gives up.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 15
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "w0P2P",
+                      "name": "actionSlot",
+                      "layout": "vertical",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "oKY2C",
+                          "type": "ref",
+                          "ref": "Wk63a",
+                          "name": "starRef"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "u4JuH",
+                  "name": "divider",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$border"
+                },
+                {
+                  "type": "frame",
+                  "id": "uO3qB",
+                  "name": "bottomRow",
+                  "width": "fill_container",
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "KVPLr",
+                      "name": "leftMeta",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "hRfQc",
+                          "name": "categoryBadge",
+                          "fill": "$info-soft",
+                          "cornerRadius": 6,
+                          "padding": [
+                            2,
+                            8
+                          ],
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "PTBF6",
+                              "name": "categoryText",
+                              "fill": "$info",
+                              "content": "dev",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "KKGcK",
+                          "name": "jokeId",
+                          "fill": "$text-muted",
+                          "content": "GSJpMvH…",
+                          "fontFamily": "Inter",
+                          "fontSize": 11
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "9C9wJ",
+                      "name": "rightMeta",
+                      "gap": 4,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "kViI5",
+                          "name": "clockIcon",
+                          "width": 12,
+                          "height": 12,
+                          "iconFontName": "clock-3",
+                          "iconFontFamily": "lucide",
+                          "fill": "$text-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "2JtNA",
+                          "name": "fetchedTime",
+                          "fill": "$text-muted",
+                          "content": "09:12:01",
+                          "fontFamily": "Inter",
+                          "fontSize": 11
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "kATID",
+              "name": "Component/SkeletonCard",
+              "reusable": true,
+              "width": 680,
+              "fill": "$surface",
+              "cornerRadius": 14,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border"
+              },
+              "gap": 12,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "tMVal",
+                  "name": "skelContent",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "5dt9l",
+                      "name": "skelLine1",
+                      "fill": "$surface-2",
+                      "width": "fill_container",
+                      "height": 14
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "bcN29",
+                      "name": "skelLine2",
+                      "fill": "$surface-2",
+                      "width": 400,
+                      "height": 14
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "KPBkg",
+                      "name": "skelLine3",
+                      "fill": "$surface-2",
+                      "width": 200,
+                      "height": 12
+                    }
+                  ]
+                },
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 10,
+                  "id": "VYDEl",
+                  "name": "skelAction",
+                  "fill": "$surface-2",
+                  "width": 40,
+                  "height": 40
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg": {
+      "type": "color",
+      "value": "#F7F8FB"
+    },
+    "border": {
+      "type": "color",
+      "value": "#E6E8EF"
+    },
+    "danger": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "danger-soft": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "favorite": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "favorite-muted": {
+      "type": "color",
+      "value": "#98A2B3"
+    },
+    "info": {
+      "type": "color",
+      "value": "#2563EB"
+    },
+    "info-soft": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "primary": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "primary-soft": {
+      "type": "color",
+      "value": "#FFFBEB"
+    },
+    "primary-strong": {
+      "type": "color",
+      "value": "#D97706"
+    },
+    "success": {
+      "type": "color",
+      "value": "#16A34A"
+    },
+    "success-soft": {
+      "type": "color",
+      "value": "#ECFDF3"
+    },
+    "surface": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "surface-2": {
+      "type": "color",
+      "value": "#F2F4F8"
+    },
+    "text": {
+      "type": "color",
+      "value": "#101828"
+    },
+    "text-muted": {
+      "type": "color",
+      "value": "#475467"
+    }
+  }
+}
