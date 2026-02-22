@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useMemo, useSyncExternalStore } from 'react';
 import type { ChuckJoke } from '@/lib/chuckApi';
 import {
   favoritesRules,
@@ -11,14 +11,39 @@ import {
   toggleFavorite,
 } from '@/store/favorites';
 
-/**
- * Context shape.
- * We expose:
- * - favorites list
- * - count (derived value)
- * - isFavorite checker
- * - toggle + remove actions
- */
+/* ── External store ─────────────────────────────────────────────── */
+
+let _cache: ChuckJoke[] | null = null;
+const _listeners = new Set<() => void>();
+
+function _invalidate() {
+  _cache = null;
+  _listeners.forEach((l) => l());
+}
+
+function subscribe(callback: () => void) {
+  _listeners.add(callback);
+  const onStorage = () => {
+    _cache = null;
+    callback();
+  };
+  window.addEventListener('storage', onStorage);
+  return () => {
+    _listeners.delete(callback);
+    window.removeEventListener('storage', onStorage);
+  };
+}
+
+function getSnapshot(): ChuckJoke[] {
+  return (_cache ??= loadFavorites());
+}
+
+function getServerSnapshot(): ChuckJoke[] {
+  return [];
+}
+
+/* ── Context ────────────────────────────────────────────────────── */
+
 type FavoritesContextValue = {
   favorites: ChuckJoke[];
   count: number;
@@ -31,48 +56,10 @@ type FavoritesContextValue = {
 const FavoritesContext = createContext<FavoritesContextValue | null>(null);
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
-  /**
-   * State container for favorites.
-   *
-   * We start with empty array to avoid hydration mismatch.
-   * Actual persisted data is loaded in useEffect.
-   */
-  const [favorites, setFavorites] = useState<ChuckJoke[]>([]);
+  const favorites = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  /**
-   * Load persisted favorites once on mount.
-   *
-   * Why inside useEffect:
-   * - localStorage is browser-only
-   * - avoids SSR issues
-   */
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setFavorites(loadFavorites());
-  }, []);
-
-  /**
-   * Persist favorites whenever state changes.
-   *
-   * Dependency array ensures this runs only when favorites updates.
-   */
-  useEffect(() => {
-    saveFavorites(favorites);
-  }, [favorites]);
-
-  /**
-   * useMemo explanation:
-   *
-   * Without useMemo:
-   * - A new object would be created on every render.
-   * - All context consumers would re-render unnecessarily.
-   *
-   * With useMemo:
-   * - Value object is stable unless favorites changes.
-   * - Prevents needless re-renders.
-   */
-  const value = useMemo<FavoritesContextValue>(() => {
-    return {
+  const value = useMemo<FavoritesContextValue>(
+    () => ({
       favorites,
       count: favorites.length,
       max: favoritesRules.MAX_FAVORITES,
@@ -81,23 +68,22 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
 
       toggle: (joke) => {
         const result = toggleFavorite(favorites, joke);
-        setFavorites(result.favorites);
+        saveFavorites(result.favorites);
+        _invalidate();
         return { blockedByLimit: result.blockedByLimit };
       },
 
-      remove: (id) => setFavorites((prev) => removeFavorite(prev, id)),
-    };
-  }, [favorites]);
+      remove: (id) => {
+        saveFavorites(removeFavorite(favorites, id));
+        _invalidate();
+      },
+    }),
+    [favorites],
+  );
 
   return <FavoritesContext.Provider value={value}>{children}</FavoritesContext.Provider>;
 }
 
-/**
- * Custom hook for accessing favorites.
- *
- * Throws error if used outside provider,
- * making misuse easier to debug.
- */
 export function useFavorites() {
   const ctx = useContext(FavoritesContext);
 
