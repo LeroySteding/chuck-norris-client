@@ -54,14 +54,10 @@
     "lint-staged": "^16.2.7",
     "prettier": "^3.8.1",
     "tailwindcss": "^4",
-    "typescript": "^5",
+    "typescript": "5.9.3",
     "vite-tsconfig-paths": "^6.1.1",
+    "picomatch": "^4.0.3",
     "vitest": "^4.0.18"
-  },
-  "overrides": {
-    "fdir": {
-      "picomatch": "^4.0.3"
-    }
   },
   "engines": {
     "node": ">=22 <23"
