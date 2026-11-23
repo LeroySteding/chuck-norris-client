@@ -23,8 +23,6 @@ export function JokesView() {
 
   async function loadInitial(signal: AbortSignal) {
     try {
-      setLoading(true);
-      setError(null);
       const jokes = await Promise.all(Array.from({ length: 10 }, () => fetchRandomJoke(signal)));
       const now = Date.now();
       setItems(jokes.map((joke, i) => ({ joke, fetchedAt: now + i })));
@@ -38,6 +36,8 @@ export function JokesView() {
 
   useEffect(() => {
     const controller = new AbortController();
+    // State updates in loadInitial only happen after the awaited fetch.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void loadInitial(controller.signal);
     return () => controller.abort();
   }, []);
@@ -99,6 +99,8 @@ export function JokesView() {
         <button
           onClick={() => {
             const c = new AbortController();
+            setLoading(true);
+            setError(null);
             void loadInitial(c.signal);
           }}
           disabled={loading}
